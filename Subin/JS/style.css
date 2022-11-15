@@ -1,0 +1,21 @@
+.container {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#todo-list li{
+    display : grid;
+    grid-template-columns: 150px repeat(4,1fr);
+    grid-gap : 1rem;
+}
+
+#todo-list li.hidden{
+    display : none;
+}
+
+
+#todo-list li button.hidden{
+    display : none;
+}

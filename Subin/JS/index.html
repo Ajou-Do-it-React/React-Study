@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="App.js" type="module" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class ="container">
+        <select>
+            <option value="TO_DO" id = "TO_DO">TO_DO</option>
+            <option value="DOING" id = "DOING">DOING</option>
+            <option value="DONE" id = "DONE">DONE</option>
+        </select>
+        <form class="todoForm">
+            <label for="input">Todo List</label>
+            <input type="text" id="input" placeholder="Write Todo here" 
+            maxlength="15" required>
+            <button>ADD</button>
+            <ul class="todoList" id="todo-list">
+            </ul>
+        </form>
+    </div>
+    
+</body>
+</html>
+

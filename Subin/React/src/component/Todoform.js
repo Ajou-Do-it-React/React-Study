@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 import { TodoContext } from "./Context.js";
 import { toDoState, Categories, categoryState, toDoSelector } from "./atom";
+import { getLocal, setLocal } from "../util"
 
 function Todoform() {
   const [value, setValue] = useState("");
@@ -12,26 +13,19 @@ function Todoform() {
   const [category, setCategory] = useRecoilState(categoryState);
 
   useEffect(() => {
-    getLocal();
+    getLocal(setTodolist);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("todo", JSON.stringify(todolist));
+    setLocal(todolist);
   }, [todolist]);
 
-  const getLocal = () => {
-    const local = localStorage.getItem("todo");
-    if (local !== null) {
-      setTodolist(JSON.parse(local));
-    }
-  };
-
-  const onChange = (event) => {
+  const handleChange = (event) => {
     const cur = event.target.value;
     setValue(cur);
   };
 
-  const onSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const item = {
       text: value,
@@ -41,16 +35,6 @@ function Todoform() {
     setTodolist([...todolist, item]);
     setValue("");
   };
-
-  const makeTodo = () =>
-    todofilter.map((val) => (
-      <Todoitem
-        key={val.id}
-        id={val.id}
-        text={val.text}
-        category={val.category}
-      />
-    ));
 
   const handleInput = (event) => {
     setCategory(event.target.value);
@@ -63,7 +47,7 @@ function Todoform() {
         <option value={Categories.DOING}>{Categories.DOING}</option>
         <option value={Categories.DONE}>{Categories.DONE}</option>
       </select>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="inputbox">Todo List : </label>
         <input
           type="text"
@@ -72,10 +56,17 @@ function Todoform() {
           placeholder="Write to do here"
           value={value}
           required
-          onChange={onChange}
+          onChange={handleChange}
         ></input>
         <button>ADD</button>
-        <ul>{makeTodo()}</ul>
+        <ul>{
+          todofilter.map((val) => (
+            <Todoitem
+              key={val.id}
+              id={val.id}
+              text={val.text}
+              category={val.category} />))
+              }</ul>
       </form>
     </div>
   );

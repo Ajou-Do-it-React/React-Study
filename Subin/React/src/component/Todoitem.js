@@ -31,8 +31,6 @@ function Todoitem({ id, text }) {
     setTodolist([...prev, newTodo, ...next]);
   };
 
-  console.log(todo);
-
   return (
     <div className="todo">
       <li id={id}>{text}</li>

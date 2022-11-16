@@ -52,13 +52,13 @@ function Todoform() {
       />
     ));
 
-  const onInput = (event) => {
+  const handleInput = (event) => {
     setCategory(event.target.value);
   };
 
   return (
     <div className="container">
-      <select onInput={onInput}>
+      <select onInput={handleInput}>
         <option value={Categories.TO_DO}>{Categories.TO_DO}</option>
         <option value={Categories.DOING}>{Categories.DOING}</option>
         <option value={Categories.DONE}>{Categories.DONE}</option>

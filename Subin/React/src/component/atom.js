@@ -1,10 +1,10 @@
 import { atom, selector } from "recoil";
 
-export const Categories = {
+export const Categories = Object.freeze({
   TO_DO: "TO_DO",
   DOING: "DOING",
   DONE: "DONE",
-};
+});
 
 export const toDoState = atom({
   key: "toDo",

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List(Javascript)</title>
+</head>
+<body>
+  <form id="todo-form">
+    <select classname = "select" name="category">
+      <option value="TO-DO">TO-DO</option>
+      <option value="Doing">DOING</option>
+      <option value="Done">DONE</option>
+    </select>
+    <label for="text">Todo List</label>
+    <input id="text" type="text", placeholder="Write Todo here" required/>
+    <button>add</button>
+  </form>
+
+  <ul id="todo-list"></ul>
+
+  <h2>Doing list</h2>
+  <ul id="doing-list"></ul>
+
+  <h2>Done list</h2>
+  <ul id="done-list"></ul>
+
+  <script src="./todo.js" type="module"></script>
+  <!-- Cannot use import statement outside a module 에러 => type='module'추가 -->
+  <!-- CORS 에러 => liveServer 이용 -->
+</body>
+</html>
